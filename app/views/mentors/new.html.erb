@@ -1,0 +1,68 @@
+<% if @mentor.errors.any? %>
+  <% @mentor.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h1>Add Mentor</h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/create_mentor" class="form-horizontal">
+
+        <!-- Label and input for division -->
+      <div class="form-group">
+        <label for="division" class="col-sm-2 control-label">
+          Division
+        </label>
+        <div class="col-sm-10">
+       <%= select_tag(:division, options_from_collection_for_select(Division.all, :division, :division, @mentor.division), :class => "form-control") %>
+        </div>
+      </div>
+
+      <!-- Label and input for first_name -->
+      <div class="form-group">
+        <label for="first_name" class="col-sm-2 control-label">
+          First name
+        </label>
+        <div class="col-sm-10">
+          <input type="text" id="first_name" name="first_name" placeholder="First name" class="form-control" value="<%= @mentor.first_name %>">
+        </div>
+      </div>
+
+      <!-- Label and input for last_name -->
+      <div class="form-group">
+        <label for="last_name" class="col-sm-2 control-label">
+          Last name
+        </label>
+        <div class="col-sm-10">
+          <input type="text" id="last_name" name="last_name" placeholder="Last name" class="form-control" value="<%= @mentor.last_name %>">
+        </div>
+      </div>
+
+
+ <!-- Label and input for email -->
+      <div class="form-group">
+        <label for="email" class="col-sm-2 control-label">
+          Email
+        </label>
+        <div class="col-sm-10">
+          <input type="text" id="email" name="email" placeholder="Email" class="form-control" value="<%= @mentor.email %>">
+        </div>
+      </div>
+
+
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <input type="submit" value="Create Mentor" class="btn btn-primary">
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+

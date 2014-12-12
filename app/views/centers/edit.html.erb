@@ -1,0 +1,65 @@
+<% if @center.errors.any? %>
+  <% @center.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h1>Edit Rating Info of Mentor - <%= @center.mentor.full_name_center %></h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/update_center/<%= @center.id %>" class="form-horizontal">
+      <!-- Label and input for mentor_id -->
+      <div class="form-group">
+        <label for="mentor_id" class="col-sm-2 control-label">
+          Mentor
+        </label>
+        <div class="col-sm-10">
+          <input type="text" id="mentor_id" name="mentor_id" placeholder="Mentor" class="form-control" value="<%= @center.mentor_id %>">
+        </div>
+      </div>
+
+      <!-- Label and input for division_id -->
+      <div class="form-group">
+        <label for="division_id" class="col-sm-2 control-label">
+          Division
+        </label>
+        <div class="col-sm-10">
+          <input type="text" id="division_id" name="division_id" placeholder="Division" class="form-control" value="<%= @center.division_id %>">
+        </div>
+      </div>
+
+      <!-- Label and input for service_id -->
+      <div class="form-group">
+        <label for="service_id" class="col-sm-2 control-label">
+          Service
+        </label>
+        <div class="col-sm-10">
+          <input type="text" id="service_id" name="service_id" placeholder="Service" class="form-control" value="<%= @center.service_id %>">
+        </div>
+      </div>
+
+      <!-- Label and input for ratings -->
+      <div class="form-group">
+        <label for="ratings" class="col-sm-2 control-label">
+          Ratings
+        </label>
+        <div class="col-sm-10">
+          <input type="text" id="ratings" name="ratings" placeholder="Ratings" class="form-control" value="<%= @center.ratings %>">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <input type="submit" value="Update Center" class="btn btn-primary">
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+

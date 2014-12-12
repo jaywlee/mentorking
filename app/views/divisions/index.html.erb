@@ -1,0 +1,40 @@
+<div class="page-header">
+  <h1>Finance Divisions</h1>
+</div>
+
+<p><a href="/divisions/new" class="btn btn-primary">Add a New Finance Division</a></p>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Divisions</th>
+      <th>Details</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @divisions.each do |division| %>
+      <tr>
+        <td><%= division.division %></td>
+        <td>
+          <a href="/divisions/<%= division.id %>" class="btn btn-primary">
+            <i class="fa fa-search-plus"></i>
+          </a>
+        </td>
+        <td>
+          <a href="/divisions/<%= division.id %>/edit" class="btn btn-warning">
+            <i class="fa fa-edit"></i>
+          </a>
+        </td>
+        <td>
+          <a href="/delete_division/<%= division.id %>" class="btn btn-danger">
+            <i class="fa fa-trash-o"></i>
+          </a>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+

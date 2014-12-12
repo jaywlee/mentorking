@@ -1,0 +1,61 @@
+<div class="page-header">
+  <h1 style="color:blue">Finance Industry Mentor Rating Center</h1>
+</div>
+
+<div style="height: 300px">
+     <img src="http://www.highpoint.edu/media/home/03b_MentorshipThatMatters.jpg" alt=" " style="width: 100%;max-height: 100%" />
+</div>
+
+<div>
+&nbsp
+</div>
+
+  <% if current_user.present? %>
+    <p><a href="/centers/new" class="btn btn-primary">Rate Your Mentor!</a></p>
+  <%else %>
+    <p style="color:red"> Sign In to Rate Your Mentor, Now!</p>
+  <% end %>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Mentor</th>
+      <th>Division</th>
+      <th>Service</th>
+      <th>Ratings(1~5)</th>
+      <th>Details</th>
+      <th></th>
+
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @centers.each do |center| %>
+      <tr>
+        <td><%= center.mentor.full_name_center %></td>
+        <td><%= center.mentor.division %></td>
+        <td><%= center.service.service_name %></td>
+        <td><%= center.ratings %></td>
+        <td>
+          <a href="/centers/<%= center.id %>" class="btn btn-primary">
+            <i class="fa fa-search-plus"></i>
+          </a>
+        </td>
+      <td></td>
+      <td></td>
+        <% if current_user.present? %>
+          <% if current_user.email == 'admin@gmail.com' %>
+        <td>
+          <a href="/delete_center/<%= center.id %>" class="btn btn-danger">
+            <i class="fa fa-trash-o"></i>
+          </a>
+        </td>
+         <% end %>
+    <%else %>
+           <td></td>
+           <td></td>
+        <% end %>
+    </tr>
+        <% end %>
+  </tbody>
+</table>
